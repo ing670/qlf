@@ -29,8 +29,8 @@ define(function() {
 
     launch: function() {
 
-      console.log(this.pages);
-      this._initCollections();
+      //console.log(this.pages);
+      //this._initCollections();
       //var entryPage = this.getPageId().split('#');
        this.pageContainer = $('<div class="page-group"></div>');
       var p=this.createPage(window.app.defaultPage);
@@ -142,16 +142,16 @@ define(function() {
     },
 
     // FIXME cann't make sure custom collection has been loaded yet
-    _initCollections: function() {
-      var collections = window.app.collections;
-      for (var key in collections) {
-        _Collection = require('./models/' + collections[key].type);
-        if (_Collection) {
-          this.collectionPool[key] = new _Collection(null, collections[key]);
-        }
-      }
-    },
-    collectionPool: {},
+    //_initCollections: function() {
+    //  var collections = window.app.collections;
+    //  for (var key in collections) {
+    //    _Collection = require('./models/' + collections[key].type);
+    //    if (_Collection) {
+    //      this.collectionPool[key] = new _Collection(null, collections[key]);
+    //    }
+    //  }
+    //},
+   // collectionPool: {},
 
   });
 

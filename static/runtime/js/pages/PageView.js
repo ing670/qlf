@@ -1,14 +1,17 @@
 define(function() {
 
   var Backbone = require('backbone');
-  var BaseView = require('../components/BaseView');
+  //var BaseView = require('../components/BaseView');
   var querystring = require('../libs/querystring');
-  return BaseView.extend({
+  return Backbone.View.extend({
 
     type: 'PageView',
     //
     className: function() {
       return "PageView"
+    },
+    getModel:function(){
+
     },
     constructor: function(options) {
         this.params = {}; // hold the parsed parameter from queryString
@@ -17,7 +20,7 @@ define(function() {
           return this.createComponent(each);
         }.bind(this));
       // call super
-      BaseView.apply(this, arguments);
+      Backbone.View.apply(this, arguments);
     },
 
 
@@ -95,12 +98,5 @@ define(function() {
       return child;
     },
     // for a container, databind happened, pass it to the sub-components
-    onDataBind: function(model) {
-      // TODO if this page has a template, re-render it
-      if (this.components) {
-        this.components.forEach(function(c){
-          c.trigger("databind", model);
-        });
-      }
-    }
+
 })});

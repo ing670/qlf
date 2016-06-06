@@ -31,7 +31,7 @@
 // 路由 | route | 只有PageView和其子类才有
 // 删除 | remove | -
 //
-define(['underscore', 'backbone', '../libs/querystring', '../view-hierachy'], function(_, Backbone, querystring){
+define(['underscore', 'backbone', '../libs/querystring'], function(_, Backbone, querystring){
 
   /*
    * View lifycycles:

@@ -4,9 +4,6 @@
 
 
 define(['promise', './libs/fastclick-custom', 'jquery', 'underscore', 'backbone','./Application','../app','./libs/flexiable','./components/loading'], function( P, FastClick, $, _, Backbone, Application,config,flexiable,loading){
-  // Promise补丁
-
-
 
   new P(function(resolve,reject){
     //require('../css/base');
@@ -34,28 +31,5 @@ define(['promise', './libs/fastclick-custom', 'jquery', 'underscore', 'backbone'
   }).catch(function(err){
     console.log(err.stack);
   });
-  //console.log(config);
-  //loading.showLoading();
-  //enable fastclick
-  //add loader
-
-
-
-  //window.library = library;
-  //window.loader = loader;
-  //window.context = context;
-
-
-
-  // TODO:
-  // app定义直接通过模板直接写在html上，保存在window.app变量里
-  // 考虑做成独立的requirejs模块，Configuration
-
-  // 加载应用实例
-
-  //window.application.launch();
-
-  // 页面加载完成，去除spinner
-  //
 
 });

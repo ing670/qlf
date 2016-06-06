@@ -3,7 +3,7 @@
  */
 
 define(['./BaseView', 'jquery'], (BaseView, $)=> {
-    require('../../css/header');
+    require('../../css/header.less');
     let html=`<div class="headview">
                 <div class="left">返回</div>
                  <div class="title">SUI Mobile</div>

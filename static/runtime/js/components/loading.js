@@ -3,7 +3,7 @@
  */
 
 define(function(){
-    require('../../css/loading');
+    require('../../css/loading.less');
     var $=require('jquery');
     return{
         showLoading:function(){

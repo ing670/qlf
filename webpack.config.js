@@ -13,7 +13,7 @@ module.exports = {
     entry: {
         bootstrap: ['static/runtime/js/bootstrap'],
         app:['static/runtime/app'],
-        base:['static/runtime/css/base'],
+        base:['static/runtime/css/base.less'],
     },
     output: {
         path: path.join(__dirname, '/dist'),  //打包输出的路径
@@ -30,7 +30,8 @@ module.exports = {
             { test: /\.(scss)$/, loader: ExtractTextPlugin.extract("sass")},
             { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'},
             { test: /\.(js|jsx)$/, loader: 'babel-loader'},
-            {test: /\.json$/,loader:'json'},
+            { test: /\.json$/,loader:'json'},
+            { test: /\.html$/, loader: "html"}
             // 内联的base64的图片地址，图片要小于8k，直接的url的地址则不解析
            // { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader'}
         ]
