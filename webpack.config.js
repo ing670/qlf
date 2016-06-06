@@ -12,7 +12,7 @@ module.exports = {
     devtool:'sourcemap',
     entry: {
         bootstrap: ['static/runtime/js/bootstrap'],
-        app:['todo-demo/app'],
+        app:['static/runtime/app'],
         base:['static/runtime/css/base'],
     },
     output: {

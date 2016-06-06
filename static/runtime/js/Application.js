@@ -42,7 +42,7 @@ define(function() {
     createPage: function(name){
       var c ='./pages/' + name + ".json";
       var config=require(c);
-      var PageClass=require("./pages/"+config.type);
+      var PageClass=require("./pages/"+config.type+".js");
       var p=new PageClass(config);
       p.render().$el.appendTo(this.pageContainer);
       return p;
@@ -120,7 +120,6 @@ define(function() {
     route: function(path, queryString) {
       path&&(path=_.last(path.split('/')));
       !path&&this.currentPage._parent&&(path=this.currentPage._parent.id);
-      console.log(path);
       if((path&&this.hasPage(path))){
         var lastPage=this.pagesClass[this.pagesClass.length-1];
         if(lastPage._parent&&path==lastPage._parent.id){
@@ -138,7 +137,6 @@ define(function() {
           nPage._parent=this.currentPage;
           this.pagesClass.push(nPage);
           this.currentPage=nPage;
-
         }
       }
     },
@@ -153,21 +151,7 @@ define(function() {
         }
       }
     },
-
     collectionPool: {},
-
-    //getCollection: function(name, models) {
-    //  var collection = this.collectionPool[name];
-    //  if (!collection) {
-    //    var _Collection = library.getCollection(name);
-    //    if (_Collection) {
-    //      collection = this.collectionPool[name] = new _Collection;
-    //    }
-    //  }
-    //  if (models)
-    //    collection.models = models;
-    //  return collection;
-    //},
 
   });
 
