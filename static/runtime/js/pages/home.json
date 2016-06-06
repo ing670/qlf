@@ -1,0 +1,31 @@
+{
+  "id": "home",
+  "header": {
+    "title": "测试应用",
+    "items": [{
+      "pull": "left",
+      "type": "link",
+      "icon": "icon icon-plus",
+      "href": "#navigate/home"
+    }]
+  },
+  "components" : [
+    {
+      "id":"abc",
+      "type": "TextView",
+      "text": "Hello World"
+    },
+    {
+      "id": "btn3",
+      "type": "ButtonView",
+      "title": "Submit",
+      "style": {
+        "background" : "red",
+        "with": "100px"
+      }
+    }
+  ],
+  "triggers": [
+    {"event": "click", "target":"btn3", "action": "call", "method": "onBtnClick"}
+  ]
+}

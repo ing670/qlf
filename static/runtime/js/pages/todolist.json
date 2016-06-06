@@ -1,0 +1,28 @@
+{
+  "id": "todolist",
+  "type":"PageView",
+  "triggers":[
+    {
+      "event": "back", "action": "call", "method": "onBack"
+    }
+  ],
+  "header": {
+    "title": "待办事项",
+    "items": [{
+      "pull": "left",
+      "type": "link",
+      "icon": "icon icon-left-nav",
+      "event": "back"
+    }]
+  },
+  "components": [
+    {
+      "id": "header",
+      "type": "HeadView"
+    },
+    {
+      "id": "todotitle",
+      "type": "TitleView"
+    }
+  ]
+}

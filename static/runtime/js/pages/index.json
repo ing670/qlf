@@ -1,0 +1,19 @@
+{
+  "id": "mainTabbar",
+  "type": "TabBarView",
+  "barPosition": "bottom",
+
+  "items": [{
+    "label": "首页",
+    "href": "#home",
+    "icon": "icon icon-home"
+  }, {
+    "label": "待办",
+    "href": "#todolist",
+    "icon": "icon icon-plus"
+  }, {
+    "label": "关于",
+    "href": "#about",
+    "icon": "icon icon-person"
+  }]
+}

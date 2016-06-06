@@ -1,0 +1,20 @@
+{
+  "id": "drawerlayoutpage",
+  "type": "drawerlayout",
+  "transition": {
+    "type": "leftOut",
+    "duration": ".2s",
+    "stretch": "70%"
+  },
+  "components": [
+    {
+      "type": "TextView",
+      "text": "Hello drawerlayout"
+    },
+    {
+      "id":"button1",
+      "type": "ButtonView",
+      "title": "Hello"
+    }
+  ]
+}

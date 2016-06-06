@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <title>测试项目</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+    <!-- weinre调试，域名要一致
+    <script src="http://test.taoliapp.com:8081/target/target-script-min.js#anonymous"></script>
+    -->
+
+    <!--<style>-->
+        <!--.spinner.icon-ab-loading {-->
+            <!--position: fixed;-->
+            <!--top: 50%; margin-top: -20px;-->
+            <!--left: 50%; margin-left: -20px;-->
+            <!--width: 40px; height:40px;-->
+            <!--background-image: url("static/runtime/fonts/load.svg");-->
+            <!--background-size: 100%;-->
+            <!--animation:rotate 1s infinite linear;-->
+        <!--}-->
+    <!--</style>-->
+    <link href="/dist/base.min.css" rel="stylesheet">
+    <link href="/dist/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- 应用模型 -->
+    <!-- 考虑到移动端，必须使用相对路径 -->
+
+
+</head>
+<body>
+<!-- 添加全局loding效果：效果在runtime定义 + 位置style中定义-->
+<!--<div class="spinner icon-ab-loading">-->
+</div>
+<script type="text/javascript">
+    // TODO 可在壳中直接操作body增加对应class,而不依赖UA，则更具备通用性
+    var u = navigator.userAgent;
+    var isiOS = u.match(/mplusIOS/); //ios终端
+    if(isiOS)
+        document.body.className = "platform-ios";
+</script>
+
+<script src="/dist/common.js" ></script>
+<script src="/dist/bootstrap.js" ></script>
+<script src="/dist/app.js"></script>
+
+</body>
+</html>

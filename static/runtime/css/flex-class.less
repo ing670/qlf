@@ -1,0 +1,223 @@
+.flex() {
+  overflow:hidden;
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
+  display:flex;
+  //& > * {
+  //  display: block;
+  //  overflow: hidden;
+  //}
+}
+
+/*
+    主轴方向：从左到右(默认)
+*/
+
+.flex-direction-left() {
+  flex-direction: row;
+  -webkit-box-orient:horizontal;
+  -webkit-box-direction:normal;
+  -webkit-flex-direction:row;
+  -ms-flex-direction:row;
+}
+
+/*
+    主轴方向：从右到左
+*/
+
+.flex-direction-right() {
+  flex-direction: row-reverse;
+  -webkit-box-orient:horizontal;
+  -webkit-box-direction:reverse;
+  -webkit-flex-direction:row-reverse;
+  -ms-flex-direction:row-reverse;
+}
+
+/*
+    主轴方向：从上到下
+*/
+
+.flex-direction-top() {
+  flex-direction: column;
+  -webkit-box-orient:vertical;
+  -webkit-box-direction:normal;
+  -webkit-flex-direction:column;
+  -ms-flex-direction:column;
+}
+
+/*
+    主轴方向：从下到上
+*/
+
+.flex-direction-bottom() {
+  flex-direction: column-reverse;
+  -webkit-box-orient:vertical;
+  -webkit-box-direction:reverse;
+  -webkit-flex-direction:column-reverse;
+  -ms-flex-direction:column-reverse;
+}
+
+/*
+    主轴对齐方式：从左到右(默认)
+*/
+
+.flex-main-start() {
+  justify-content: flex-start;
+  -webkit-box-pack:start;
+  -webkit-justify-content:flex-start;
+  -ms-flex-pack:start;
+}
+
+/*
+    主轴对齐方式：从右到左
+*/
+
+.flex-main-end() {
+  justify-content: flex-end;
+  -webkit-box-pack:end;
+  -webkit-justify-content:flex-end;
+  -ms-flex-pack:end;
+}
+
+/*
+    主轴对齐方式：两端对齐
+*/
+
+.flex-main-space-between() {
+  -webkit-box-pack:justify;
+  -webkit-justify-content:space-between;
+  -ms-flex-pack:justify;
+  justify-content:space-between;
+}
+
+/*
+    主轴对齐方式：居中对齐
+*/
+
+.flex-main-center {
+  justify-content: center;
+  -webkit-box-pack:center;
+  -webkit-justify-content:center;
+  -ms-flex-pack:center;
+}
+
+/*
+    主轴齐方式：从上到下(默认)
+*/
+
+.flex-cross-start() {
+  align-items: flex-start;
+  -webkit-box-align:start;
+  -webkit-align-items:flex-start;
+  -ms-flex-align:start;
+  -ms-grid-row-align:flex-start;
+}
+
+/*
+    交叉轴齐方式：从下到上
+*/
+
+.flex-cross-end() {
+  align-items: flex-end;
+  -webkit-box-align:end;
+  -webkit-align-items:flex-end;
+  -ms-flex-align:end;
+  -ms-grid-row-align:flex-end;
+}
+
+/*
+   交叉轴齐方式：居中对齐
+*/
+
+.flex-cross-center() {
+  align-items: center;
+  -webkit-box-align:center;
+  -webkit-align-items:center;
+  -ms-flex-align:center;
+  -ms-grid-row-align:center;
+}
+
+/*
+    交叉轴齐方式：跟随内容高度对齐
+*/
+
+.flex-cross-baseline() {
+  align-items: baseline;
+  -webkit-box-align:baseline;
+  -webkit-align-items:baseline;
+  -ms-flex-align:baseline;
+  -ms-grid-row-align:baseline;
+}
+
+/*
+    交叉轴轴齐方式：高度并排铺满
+*/
+
+.flex-cross-stretch() {
+  align-items: stretch;
+  -webkit-box-align:stretch;
+  -webkit-align-items:stretch;
+  -ms-flex-align:stretch;
+  -ms-grid-row-align:stretch;
+}
+/*
+    子元素平分宽度
+*/
+.flex-box-main-average() {
+  width: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+  -webkit-box-flex:1;
+  -webkit-flex-grow:1;
+  -ms-flex-positive:1;
+  -webkit-flex-shrink:1;
+  -ms-flex-negative:1;
+}
+/*
+    子元素平分高度
+*/
+.flex-box-cross-average() {
+  height: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+  -webkit-box-flex:1;
+  -webkit-flex-grow:1;
+  -ms-flex-positive:1;
+  -webkit-flex-shrink:1;
+  -ms-flex-negative:1;
+}
+.flex-box-1(){
+    flex-grow: 1;
+    flex-shrink: 1;
+  -webkit-box-flex:1;
+  -webkit-flex-grow:1;
+  -ms-flex-positive:1;
+  -webkit-flex-shrink:1;
+  -ms-flex-negative:1;
+}
+.flex-box-0(){
+  flex-grow: 0;
+  flex-shrink: 0;
+  -webkit-box-flex:0;
+  -webkit-flex-grow:0;
+  -ms-flex-positive:0;
+  -webkit-flex-shrink:0;
+  -ms-flex-negative:0;
+}
+/*
+    子元素10等分flex-box-1 flex-box-2,
+*/
+.flex-box(10);
+.flex-box(@n, @i: 1) when (@i =< @n) {
+  [class*="flex-box-@{i}"] {
+    flex-grow: @i;
+    flex-shrink: @i;
+    -webkit-box-flex:@i;
+    -webkit-flex-grow:@i;
+    -ms-flex-positive:@i;
+    -webkit-flex-shrink:@i;
+    -ms-flex-negative:@i;
+  }
+  .flex-box(@n, (@i + 1));
+}

@@ -1,0 +1,28 @@
+@import "flex-class";
+@import "rem";
+@import "variables";
+.HeadView{
+  .headview{
+    .flex();
+    .px2rem(height,88);
+    .flex-main-space-between();
+    .px2rem(padding-left,16);
+    .px2rem(padding-right,16);
+    background: #f7f7f8;
+  }
+  div{
+    .px2rem(line-height,88);
+    .px2px(font-size,32);
+    //&:first-child{
+    //  .px2px(font-size,16);
+    //}
+    //&:last-child{
+    //  .px2px(font-size,16);
+    //}
+  }
+  .title{
+    .flex-box-1();
+    .px2px(font-size,36);
+    text-align: center;
+  }
+}

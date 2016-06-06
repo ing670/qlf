@@ -1,0 +1,22 @@
+{
+  "id":"test",
+  "type": "PageView",
+  "header": {
+    "title": "",
+    "items": [{
+      "pull": "left",
+      "type": "link",
+      "icon": "icon icon-left-nav",
+      "href": "#navigate/home"
+    }]
+  },
+  "components": [
+    {
+      "type": "TextView",
+      "text": "This is a Test page"
+    },{
+      "type": "HTMLView",
+      "html": "<a href=\"#home/test1\">next page</a>"
+    }
+  ]
+}
