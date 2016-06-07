@@ -12,5 +12,5 @@ module.exports = {
       "type" : "DemoToDo"
     }
   },
-  defaultPage: "todolist",
+  defaultPage: "index",
 };

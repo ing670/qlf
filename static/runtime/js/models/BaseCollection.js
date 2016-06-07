@@ -31,7 +31,6 @@ define(['backbone', 'backbone.paginator'], function(Backbone, PageableCollection
     },
 
     search: function(query) {
-      console.log("searching")
       if (_.isEmpty(query)) {
         //过滤条件为空，恢复全集
         this.trigger("reset", this.fullCollection.models);

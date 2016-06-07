@@ -16,12 +16,11 @@ define(function() {
     initialize: function() {
       this.pages=[];
       this.pagesClass=[];
-      this.currentPage;
+      this.currentPage=null;
       var _this = this;
       var req = require.context("./pages", true, /^(.*\.(json$))[^.]*$/igm);
 
       req.keys().forEach(function(key){
-        console.log(key);
         _this.pages.push(req(key));
       });
 
@@ -32,12 +31,14 @@ define(function() {
       //console.log(this.pages);
       //this._initCollections();
       //var entryPage = this.getPageId().split('#');
+      this._initRouter();
        this.pageContainer = $('<div class="page-group"></div>');
       var p=this.createPage(window.app.defaultPage);
       this.pagesClass.push(p);
       this.currentPage=p;
       this.pageContainer.appendTo(window.document.body);
-      this._initRouter();
+      this.currentPage.onRender&&this.currentPage.onRender();
+
     },
     createPage: function(name){
       var c ='./pages/' + name + ".json";
@@ -46,7 +47,6 @@ define(function() {
       var p=new PageClass(config);
       p.render().$el.appendTo(this.pageContainer);
       return p;
-
     },
     _initRouter: function() {
       var Router = Backbone.Router.extend({
@@ -67,10 +67,13 @@ define(function() {
       console.log("start history with root: [%s]", rootPath);
     },
     hasPage:function(path){
-      return this.pages.find(function(page,index){
-        return page.id==path;
+      var pageConfig=null;
+       this.pages.forEach(function(page,index){
+        if(page.id==path){
+          pageConfig= page;
+        }
       });
-
+      return pageConfig;
     },
     _animateElement : function($from, $to, direction) {
     // todo: 可考虑如果入参不指定，那么尝试读取 $to 的属性，再没有再使用默认的
@@ -110,16 +113,18 @@ define(function() {
         $to.removeClass(animPageClasses);
         $from.css({display:'none'});
       });
-    //$from.animationEnd(function() {
-    //  $from.removeClass(animPageClasses);
-    //});
-    //$to.animationEnd(function() {
-    //  $to.removeClass(animPageClasses);
-    //});
   },
+    unparam: function(str, params) {
+      if (!str) return;
+      params = params || {};
+      str.replace(/\/$/, '').replace(/([^?=&]+)=([^&#]*)/g, function (m, key, value) {
+        params[key] = decodeURIComponent(value);
+      });
+      return params;
+    },
     route: function(path, queryString) {
       path&&(path=_.last(path.split('/')));
-      !path&&this.currentPage._parent&&(path=this.currentPage._parent.id);
+      !path&&this.currentPage&&this.currentPage._parent&&(path=this.currentPage._parent.id);
       if((path&&this.hasPage(path))){
         var lastPage=this.pagesClass[this.pagesClass.length-1];
         if(lastPage._parent&&path==lastPage._parent.id){
@@ -130,6 +135,7 @@ define(function() {
           this.currentPage.$el.css({'display':'block'});
           lastPage._parent=null;
           this.pagesClass.pop();
+          this.currentPage.onResume&&this.currentPage.onResume(this.unparam(queryString));
         }else{
           //新页面
           var nPage=this.createPage(path);
@@ -137,25 +143,11 @@ define(function() {
           nPage._parent=this.currentPage;
           this.pagesClass.push(nPage);
           this.currentPage=nPage;
+          this.currentPage.onRender&&this.currentPage.onRender(this.unparam(queryString));
         }
       }
     },
-
-    // FIXME cann't make sure custom collection has been loaded yet
-    //_initCollections: function() {
-    //  var collections = window.app.collections;
-    //  for (var key in collections) {
-    //    _Collection = require('./models/' + collections[key].type);
-    //    if (_Collection) {
-    //      this.collectionPool[key] = new _Collection(null, collections[key]);
-    //    }
-    //  }
-    //},
-   // collectionPool: {},
-
   });
-
-
   Application.extend = Backbone.Model.extend;
   return Application;
 });

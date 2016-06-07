@@ -1,6 +1,7 @@
 define(function() {
 
   var Backbone = require('backbone');
+  var _ = require('underscore');
   //var BaseView = require('../components/BaseView');
   var querystring = require('../libs/querystring');
   return Backbone.View.extend({

@@ -6,23 +6,31 @@
     .flex();
     .px2rem(height,88);
     .flex-main-space-between();
-    .px2rem(padding-left,16);
-    .px2rem(padding-right,16);
+    .px2rem(padding-left,32);
+    .px2rem(padding-right,32);
     background: #f7f7f8;
   }
   div{
     .px2rem(line-height,88);
     .px2px(font-size,32);
-    //&:first-child{
-    //  .px2px(font-size,16);
-    //}
-    //&:last-child{
-    //  .px2px(font-size,16);
-    //}
+    &:first-child{
+      z-index: 1;
+    }
+    &:last-child{
+      z-index: 1;
+    }
   }
-  .title{
-    .flex-box-1();
-    .px2px(font-size,36);
-    text-align: center;
-  }
+
+
+    h1{
+      .flex-box-1();
+      text-align: center;
+      .px2px(font-size,36);
+      position: absolute;
+      margin: 0;
+      text-align: center;
+      width: 100%;
+      left: 0;
+    }
+
 }

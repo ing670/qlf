@@ -11,6 +11,7 @@ define(['promise', './libs/fastclick-custom', 'jquery', 'underscore', 'backbone'
     flexiable(window);
     //Promise.polyfill();
     window.$=$;
+    window.Backbone=Backbone;
     FastClick.attach(document.body);
     loading.showLoading();
     window.app=config;

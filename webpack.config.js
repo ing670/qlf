@@ -25,8 +25,8 @@ module.exports = {
         loaders: [
             { test: /\.ejs$/, loader: "ejs-compiled-loader"},
             //{ test: /\.(css|less|scss)$/, loader: ExtractTextPlugin.extract('style-loader!css-loader','css-loader?sourceMap!less-loader?sourceMap',"sass")},
-            { test: /\.(css)$/, loader: ExtractTextPlugin.extract('style-loader!css-loader')},
-            { test: /\.(less)$/, loader: ExtractTextPlugin.extract('css-loader?sourceMap!less-loader?sourceMap')},
+            { test: /\.(css)$/, loader: ExtractTextPlugin.extract('style-loader!css-loader!autoprefixer-loader?safe=true')},
+            { test: /\.(less)$/, loader: ExtractTextPlugin.extract('css-loader!autoprefixer-loader!less-loader?safe=true')},
             { test: /\.(scss)$/, loader: ExtractTextPlugin.extract("sass")},
             { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'},
             { test: /\.(js|jsx)$/, loader: 'babel-loader'},
@@ -43,7 +43,6 @@ module.exports = {
             name: "common",
             minChunks: 2
         }),
-
         //new webpack.optimize.MinChunkSizePlugin(100),
         new ExtractTextPlugin("[name].min.css"),
         new HtmlWebpackPlugin({                        //根据模板插入css/js等生成最终HTML
